@@ -8,15 +8,17 @@ import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { SignupComponent } from './auth/components/signup/signup.component';
 import { ChangePasswordComponent } from './auth/components/change-password/change-password.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 const routes : Routes = [
+  {path:'', redirectTo:'about-us',pathMatch:'full'}, // default route
   {path:'about-us',component:AboutUsComponent},
   {path:'how-it-works',component:HowItWorksComponent},
   {path:'auth',component:AuthComponent,
-    children:[{path:'login',component:LoginComponent},
-              {path:'signup',component:SignupComponent},
-              {path:'change-password',component:ChangePasswordComponent}]
-            }];
+    loadChildren: ()=> import('./auth/auth.module').then((x)=>x.AuthModule),
+  }, // lazy loading -> if auth is called then only child comp. will be called
+  {path:'**',component:NotFoundComponent}, // Not found route
+];
 
 
 @NgModule({
