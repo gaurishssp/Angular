@@ -8,7 +8,7 @@ const routes: Routes = [{
   path: 'user', component: UserComponent,
   children: [{ path: 'add-book', component: AddBookComponent },
             { path: 'delete-book', component: DeleteBookComponent }]
-}];;
+}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
