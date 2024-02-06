@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MaterialModule } from './material.module';
-import {MatButtonModule} from '@angular/material/button';
 import { FooterComponent } from './components/footer/footer.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -15,8 +15,8 @@ import { FooterComponent } from './components/footer/footer.component';
   ],
   imports: [
     CommonModule,
-    MaterialModule,
-    MatButtonModule
+    RouterModule,
+    MaterialModule
   ],
   exports:[ToolbarComponent,FooterComponent,MaterialModule]
 })
