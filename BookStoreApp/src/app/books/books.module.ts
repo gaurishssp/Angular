@@ -6,6 +6,9 @@ import { BooksRoutingModule } from './books-routing.module';
 import { BooksComponent } from './books.component';
 import { BookService } from './services/book.service';
 import { SharedModule } from '../shared/shared.module';
+import { RecentBooksComponent } from './components/recent-books/recent-books.component';
+import { BookCardComponent } from './components/book-card/book-card.component';
+import { AddBookComponent } from './components/add-book/add-book.component';
 
 
 @NgModule({
@@ -13,12 +16,15 @@ import { SharedModule } from '../shared/shared.module';
     AllBooksComponent,
     BookDetailsComponent,
     BooksComponent,
+    RecentBooksComponent,
+    BookCardComponent,
+    AddBookComponent,
   ],
   imports: [
     CommonModule,
     BooksRoutingModule,
     SharedModule
   ],
-  //providers : [BookService],
+  providers : [BookService],
 })
 export class BooksModule { }

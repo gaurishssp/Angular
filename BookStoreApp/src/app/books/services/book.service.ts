@@ -6,7 +6,7 @@ export class BookService {
 
   constructor() { }
 
-  public getBooks(): BookModel[]
+  public getBooks(): any[]
   {
     return [{
       "id": 1,
@@ -42,6 +42,23 @@ export class BookService {
       "totalPages": 437,
       "author": "Jacky Singh",
       "price": { "currency": "INR", "value": 321 }
+    }];
+  }
+  public getRecentBooks(): any[]
+  {
+    return [{
+      "id": 1,
+      "title": "Angular Fundamentals",
+      "totalPages": 453,
+      "author": "Ram Singh",
+      "price": { "currency": "INR", "value": 199 }
+    },
+    {
+      "id": 3,
+      "title": "C# Fundamentals",
+      "totalPages": 768,
+      "author": "Shirish Bhatt",
+      "price": { "currency": "INR", "value": 798 }
     }];
   }
 }

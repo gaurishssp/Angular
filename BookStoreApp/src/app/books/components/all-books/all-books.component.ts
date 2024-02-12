@@ -14,7 +14,17 @@ export class AllBooksComponent implements OnInit {
   
   }
   ngOnInit(): void {
-      this.books = this.bookservice.getBooks();
+      const allBooks = this.bookservice.getBooks();
+      allBooks.forEach(b=>{
+        var obj = new BookModel();
+        obj.id = b.id;
+        obj.author = b.author;
+        obj.price = b.price;
+        obj.title = b.title;
+        obj.totalPages = b.totalPages;
+        
+        this.books.push(obj);
+      });
       console.log(this.books);
   }
 }
