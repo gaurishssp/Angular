@@ -1,1 +1,9 @@
-<p>add-book works!</p>
+<h1>Add Book</h1>
+<form #myForm="ngForm" (ngSubmit)="saveBook(myForm.value)">
+    <input type="text" name="title" placeholder="Title" ngModel> <br><br>
+    <input type="text" name="author" placeholder="Author" ngModel> <br><br>
+    <input type="number" name="pages" placeholder="Pages" ngModel> <br><br>
+    <input type="number" name="price" placeholder="Price" ngModel> <br><br>
+    <button type="submit">Save</button>
+</form>
+<h2>{{myForm.value | json}}</h2>
