@@ -6,6 +6,8 @@ export class BookModel
     public title: string;
     public totalPages: number;
     private _author : string;
+    public isPublished : boolean;
+    public publishedOn : Date;
     public price: PriceModel;
 
     public get author():string

@@ -8,18 +8,30 @@ import { BookModel } from '../../models/book.model';
   styleUrls: ['./add-book.component.css']
 })
 export class AddBookComponent implements OnInit {
+model:BookModel = new BookModel();
 constructor(private _bookService:BookService) { }
 ngOnInit(): void {
-
+this.model.title="PowerApps";
+//this.model.author="Nitish WebGentle";
+this.model.isPublished = true;
+this.model.totalPages = 100;
+//this.model.publishedOn = Date.now;
+this.model.price={currency:"INR" , value : 100}
 }
-
-saveBook(value: any): void{
-  console.log(value)
-  const book:BookModel = new BookModel();
-  book.title=value.title;
-  book.author=value.author;
-  book.totalPages=value.pages;
-  book.price=value.price;
-  this._bookService.addBook(book);
+//Two way binding Example
+saveBook():void{
+this._bookService.addBook(this.model);
 }
+//One Way Binding Example
+// saveBook(value: any): void{
+//   console.log(value)
+//   const book:BookModel = new BookModel();
+//   book.title=value.title;
+//   book.author=value.author;
+//   book.totalPages=value.pages;
+//   book.isPublished = value.isPublished;
+//   book.publishedOn = value.publishedOn;
+//   book.price= {currency:"INR" , value : value.price}
+//   this._bookService.addBook(book);
+// }
 }
