@@ -6,6 +6,8 @@ import { MaterialModule } from './material.module';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { AuthorComponent } from './components/author/author.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BoolformatPipe } from './pipes/boolformat.pipe';
 
 
 @NgModule({
@@ -13,13 +15,15 @@ import { AuthorComponent } from './components/author/author.component';
     NotFoundComponent,
     ToolbarComponent,
     FooterComponent,
-    AuthorComponent
+    AuthorComponent,
+    BoolformatPipe
   ],
   imports: [
     CommonModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
-  exports:[ToolbarComponent,FooterComponent,MaterialModule,AuthorComponent]
+  exports:[ToolbarComponent,FooterComponent,MaterialModule,AuthorComponent,HttpClientModule,BoolformatPipe]
 })
 export class SharedModule { }

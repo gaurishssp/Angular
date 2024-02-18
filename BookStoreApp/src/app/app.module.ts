@@ -9,6 +9,7 @@ import { AboutUsComponent } from './public-components/about-us/about-us.componen
 import { HowItWorksComponent } from './public-components/how-it-works/how-it-works.component';
 import { HomeComponent } from './public-components/home/home.component';
 import { BookService } from './books/services/book.service';
+import { BookAPIService } from './books/services/books.api.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { BookService } from './books/services/book.service';
     BrowserAnimationsModule,
   ],
   exports : [AppRoutingModule],
-  providers: [BookService],
+  providers: [BookService,BookAPIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

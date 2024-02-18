@@ -12,10 +12,10 @@ const routes: Routes = [//{path:'', redirectTo:'all-books',pathMatch:'full'},
   // children: [
   //     { path: ':id', component: BookDetailsComponent }]
 },
-{path:'recent',component:RecentBooksComponent}
+{path:'recent',component:RecentBooksComponent,title:'Recent'}
 ,{path:'id',component:BookDetailsComponent}
-,{path:'new',component:AddBookComponent}
-,{path:'new-reactive',component:AddBookReactiveComponent}];
+,{path:'new',component:AddBookComponent,title:'Add Book'}
+,{path:'new-reactive',component:AddBookReactiveComponent,title:'Add Book Reative'}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

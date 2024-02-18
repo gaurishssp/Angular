@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { BookService } from '../../services/book.service';
+import { BookAPIService } from '../../services/books.api.service';
 
 @Component({
   selector: 'app-add-book-reactive',
@@ -12,7 +13,7 @@ export class AddBookReactiveComponent implements OnInit {
   public addBookForm: FormGroup;
   public titleErrorMessage: string;
   currencies : any[] = [{value:'USD',viewValue:'US Dollar'},{value:'INR',viewValue:'Indial Rupes'}];
-  constructor(private _bookService: BookService,private _formBuilder: UntypedFormBuilder) {
+  constructor(private _bookService: BookAPIService,private _formBuilder: UntypedFormBuilder) {
     
   }
   ngOnInit(): void {
@@ -22,8 +23,8 @@ export class AddBookReactiveComponent implements OnInit {
   private initForm()
   {
     this.addBookForm = this._formBuilder.group({
-      title: ['this is default', [Validators.required, Validators.minLength(10)]],
-       author: '',
+      title: ['', [Validators.required, Validators.minLength(10)]],
+       author: 'Gaurish',
       totalPages: '',
       price: this._formBuilder.group({
         currency: '',
@@ -31,28 +32,65 @@ export class AddBookReactiveComponent implements OnInit {
       }),
       publishedOn: '',
       isPublished: '',
-      // formatType: '',
-      // pdfFormat: '',
-      // docFormat: '',
-      //authors: this._formBuilder.array([this.getAuthorControl(), this.getAuthorControl()])
     });
-    // this.addBookForm = new FormGroup({
-    //   title: new FormControl(null,Validators.required),
-    //   author: new FormControl('Gaurish',[Validators.required,Validators.minLength(10)]), // Set default value
-    //   totalPages: new FormControl(),
-    //   price: new FormGroup({ currency: new FormControl(),value: new FormControl() }),
-    //   publishedOn: new FormControl(),
-    //   isPublished: new FormControl(),
-    //   formatType: new FormControl(),
-    //   pdfFormat: new FormControl(),
-    //   docFormat: new FormControl()
-    //});
   }
   saveBook(): void {
-    console.log(this.addBookForm.value);
-    if(this.addBookForm.valid)
-        this._bookService.addBook(this.addBookForm.value);
+    if (this.addBookForm.valid) {
+      this._bookService.addBook(this.addBookForm.value).subscribe(log => {
+        console.log(log);
+      });
+    }
+    else {
+      alert('Form invalid');
+    }
   }
+}
+// export class AddBookReactiveComponent implements OnInit {
+
+//   public addBookForm: FormGroup;
+//   public titleErrorMessage: string;
+//   currencies : any[] = [{value:'USD',viewValue:'US Dollar'},{value:'INR',viewValue:'Indial Rupes'}];
+//   constructor(private _bookService: BookService,private _formBuilder: UntypedFormBuilder) {
+    
+//   }
+//   ngOnInit(): void {
+//     this.initForm();
+    
+//   }
+//   private initForm()
+//   {
+//     this.addBookForm = this._formBuilder.group({
+//       title: ['this is default', [Validators.required, Validators.minLength(10)]],
+//        author: '',
+//       totalPages: '',
+//       price: this._formBuilder.group({
+//         currency: '',
+//         value: ''
+//       }),
+//       publishedOn: '',
+//       isPublished: '',
+//       // formatType: '',
+//       // pdfFormat: '',
+//       // docFormat: '',
+//       //authors: this._formBuilder.array([this.getAuthorControl(), this.getAuthorControl()])
+//     });
+//     // this.addBookForm = new FormGroup({
+//     //   title: new FormControl(null,Validators.required),
+//     //   author: new FormControl('Gaurish',[Validators.required,Validators.minLength(10)]), // Set default value
+//     //   totalPages: new FormControl(),
+//     //   price: new FormGroup({ currency: new FormControl(),value: new FormControl() }),
+//     //   publishedOn: new FormControl(),
+//     //   isPublished: new FormControl(),
+//     //   formatType: new FormControl(),
+//     //   pdfFormat: new FormControl(),
+//     //   docFormat: new FormControl()
+//     //});
+  // }
+  // saveBook(): void {
+  //   console.log(this.addBookForm.value);
+  //   if(this.addBookForm.valid)
+  //       this._bookService.addBook(this.addBookForm.value);
+  // }
   // private getAuthorControl(): UntypedFormGroup {
   //   return this._formBuilder.group({
   //     fullName: '',
@@ -87,4 +125,4 @@ export class AddBookReactiveComponent implements OnInit {
   //   pdfControl?.updateValueAndValidity();
   //   docControl?.updateValueAndValidity();
   // }
-}
+//}
